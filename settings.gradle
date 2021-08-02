@@ -1,0 +1,6 @@
+include ':core'
+include ':androidcore'
+include ':domain'
+include ':data'
+include ':presentation'
+rootProject.name = "CleanVideoPlayerSample"
