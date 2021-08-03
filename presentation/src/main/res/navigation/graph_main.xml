@@ -23,5 +23,8 @@
         <argument
             android:name="videoId"
             app:argType="integer" />
+<!--        <argument-->
+<!--            android:name="videoId"-->
+<!--            app:argType="int" />-->
     </fragment>
 </navigation>

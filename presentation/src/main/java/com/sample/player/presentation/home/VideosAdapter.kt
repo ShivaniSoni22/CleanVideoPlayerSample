@@ -2,6 +2,7 @@ package com.sample.player.presentation.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +14,8 @@ import com.sample.player.presentation.util.PlayerViewAdapter.Companion.releaseRe
 
 class VideosAdapter(val listener: (Video) -> Unit) :
     ListAdapter<Video, VideosAdapter.VideoViewHolder>(TagDU()), PlayerStateCallback {
+
+//    private var mItemClickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
         return VideoViewHolder(
@@ -31,10 +34,27 @@ class VideosAdapter(val listener: (Video) -> Unit) :
         releaseRecycledPlayers(position)
         super.onViewRecycled(holder)
     }
+//
+//    fun setOnItemClickListener(mItemClickListener: OnItemClickListener?) {
+//        this.mItemClickListener = mItemClickListener
+//    }
+//
+//    interface OnItemClickListener {
+//        fun onItemClick(view: View, position: Int, video: Video)
+//    }
 
     inner class VideoViewHolder(private val mBinding: ItemVideoBinding) : RecyclerView.ViewHolder(mBinding.root) {
 
         fun bind(video: Video) {
+            ViewCompat.setTransitionName(mBinding.player, "playerView")
+//            mBinding.root.setOnClickListener {
+//                mItemClickListener!!.onItemClick(
+//                    mBinding.player,
+//                    adapterPosition,
+//                    video
+//                )
+//                listener.invoke(video)
+//            }
             mBinding.apply {
                 txtTitle.text = video.title
                 dataModel = video

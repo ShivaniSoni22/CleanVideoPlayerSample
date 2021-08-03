@@ -13,6 +13,7 @@
         app:controller_layout_id="@layout/exo_player_control_view"
         app:fastforward_increment="10000"
         app:hide_on_touch="true"
+        android:transitionName="playerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

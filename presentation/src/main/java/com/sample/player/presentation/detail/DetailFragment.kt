@@ -22,10 +22,10 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>() {
 
     private lateinit var playbackStateListener: Player.EventListener
     private lateinit var playerState: String
-    val STATE_RESUME_WINDOW = "resumeWindow"
-    val STATE_RESUME_POSITION = "resumePosition"
-    val STATE_PLAYER_FULLSCREEN = "playerFullscreen"
-    val STATE_PLAYER_PLAYING = "playerOnPlay"
+    private val STATE_RESUME_WINDOW = "resumeWindow"
+    private val STATE_RESUME_POSITION = "resumePosition"
+    private val STATE_PLAYER_FULLSCREEN = "playerFullscreen"
+    private val STATE_PLAYER_PLAYING = "playerOnPlay"
 
     private var videoUrl: String = ""
     override val viewModel: DetailViewModel by viewModels()
@@ -48,9 +48,6 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //        ViewCompat.setTransitionName(binding?.player!!, "PlayerView" )
-//        sharedElementEnterTransition = TransitionInflater.from(requireContext())
-//            .inflateTransition(R.transition.shared_image)
         if (savedInstanceState != null) {
             currentWindow = savedInstanceState.getInt(STATE_RESUME_WINDOW)
             playbackPosition = savedInstanceState.getLong(STATE_RESUME_POSITION)
@@ -58,8 +55,8 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>() {
             isPlayerPlaying = savedInstanceState.getBoolean(STATE_PLAYER_PLAYING)
         }
         viewModel.apply {
+//            getVideoDetails(arguments?.getString("videoId")!!.toInt())
             getVideoDetails(args.videoId)
-
             videoDetail.observe(viewLifecycleOwner, { detail ->
                 binding?.tvTitle?.text = detail.title
                 videoUrl = detail.url
